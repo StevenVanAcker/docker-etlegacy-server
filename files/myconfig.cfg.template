@@ -5,17 +5,12 @@ set sv_wwwDownload "1"                          // toggle to enable web download
 set sv_wwwDlDisconnected "0"            // tell clients to perform their downloads while disconnected from the server
 set sv_wwwFallbackURL ""                        // URL to send to if an http/ftp fails or is refused client side
 
-set g_password "{{connectpassword}}"					// set to password protect the server
-set rconpassword "{{rconpassword}}" 				// remote console access password
-set sv_wwwBaseURL "http://{{serverip}}"                            // base URL for redirection
-set sv_hostname "{{servername}}"
-set server_motd0 " ^N{{servername}} ET^7 MOTD "                 // message in right corner of join screen here
-bot difficulty {{bot_difficulty | default(0)}}
-bot maxbots {{bot_count | default(0)}}
+set g_password "$CONNECTPASSWORD"					// set to password protect the server
+set rconpassword "$RCONPASSWORD" 				// remote console access password
+set sv_wwwBaseURL "http://$SERVERIP"                            // base URL for redirection
+set sv_hostname "$SERVERNAME"
+set server_motd0 " ^N$SERVERNAME ET^7 MOTD "                 // message in right corner of join screen here
+bot difficulty $BOTDIFFICULTY
+bot maxbots $BOTCOUNT
 
-{% if bot_war %}
-bot botteam {{ bot_team | default(1)}}
-bot botsperhuman {{ botsperhuman | default(3) }}
-{% else %}
 bot botwar -1
-{% endif %}
