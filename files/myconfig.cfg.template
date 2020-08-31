@@ -7,7 +7,7 @@ set sv_wwwFallbackURL ""                        // URL to send to if an http/ftp
 
 set g_password "$CONNECTPASSWORD"					// set to password protect the server
 set rconpassword "$RCONPASSWORD" 				// remote console access password
-set sv_wwwBaseURL "http://$SERVERIP"                            // base URL for redirection
+set sv_wwwBaseURL "http://$SERVERIP:11180"                            // base URL for redirection
 set sv_hostname "$SERVERNAME"
 set server_motd0 " ^N$SERVERNAME ET^7 MOTD "                 // message in right corner of join screen here
 bot difficulty $BOTDIFFICULTY
