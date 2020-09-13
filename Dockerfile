@@ -26,17 +26,16 @@ RUN rm -rf /home/etuser/fakebin
 # create nginx config
 COPY files/nginx.conf /etc/nginx/nginx.conf
 
-# append extra config line + template
+# append extra config line + templates
 RUN echo "exec myconfig.cfg" >> /home/etuser/et/etmain/etl_server.cfg
 COPY files/myconfig.cfg.template /home/etuser/et/etmain/myconfig.cfg.template
+COPY files/omni-bot.cfg.template /home/etuser/et/legacy/omni-bot/et/user/omni-bot.cfg.template
 
 # lobotomize bots
-RUN sed -i 's:^moveskill.*:moveskill=0:' /home/etuser/et/legacy/omni-bot/et/user/omni-bot.cfg 
+# RUN sed -i 's:^moveskill.*:moveskill=0:' /home/etuser/et/legacy/omni-bot/et/user/omni-bot.cfg 
 
 USER root
 COPY init.sh /init.sh
-
-ENV BOTCOUNT=5
 
 CMD nginx && su -c /init.sh etuser
 
