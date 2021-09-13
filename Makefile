@@ -4,7 +4,7 @@ runargs := --rm -ti -v $$PWD/maps:/maps -p 11180:80 -p 27960:27960/udp --env-fil
 build:
 	docker build $(buildargs) -t $(cn) .
 
-run: build
+run: 
 	docker run $(runargs) $(cn)
 
 
